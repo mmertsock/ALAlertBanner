@@ -16,3 +16,6 @@ xcuserdata
 *.xcuserstate
 *.xccheckout
 *.moved-aside
+Xamarin/libALAlertBannerSDK.a
+Xamarin/libXALAlertBanner-armv7.a
+Xamarin/libXALAlertBanner-i386.a
