@@ -48,6 +48,9 @@ static CFTimeInterval const kRotationDurationIPad = 0.4;
 
 static CGFloat const kForceHideAnimationDuration = 0.1f;
 
+static CGFloat defaultTitleFontSize = 13.0f;
+static CGFloat defaultSubtitleFontSize = 10.0f;
+
 #define AL_DEVICE_ANIMATION_DURATION UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? kRotationDurationIPad : kRotationDurationIphone;
 
 //macros referenced from MBProgressHUD. cheers to @matej
@@ -171,7 +174,7 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     
     _titleLabel = [[UILabel alloc] init];
     _titleLabel.backgroundColor = [UIColor clearColor];
-    _titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13.f];
+    _titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:defaultTitleFontSize];
     _titleLabel.textColor = [UIColor colorWithWhite:1.f alpha:0.9f];
     _titleLabel.textAlignment = NSTextAlignmentLeft;
     _titleLabel.numberOfLines = 1;
@@ -184,7 +187,7 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     
     _subtitleLabel = [[UILabel alloc] init];
     _subtitleLabel.backgroundColor = [UIColor clearColor];
-    _subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:10.f];
+    _subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:defaultSubtitleFontSize];
     _subtitleLabel.textColor = [UIColor colorWithWhite:1.f alpha:0.9f];
     _subtitleLabel.textAlignment = NSTextAlignmentLeft;
     _subtitleLabel.numberOfLines = 0;
@@ -279,6 +282,13 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
 
 # pragma mark -
 # pragma mark Public Class Methods
+
++ (void)setDefaultFontSizeForTitle:(CGFloat)titleSize
+                          subtitle:(CGFloat)subtitleSize
+{
+    defaultTitleFontSize = titleSize;
+    defaultSubtitleFontSize = subtitleSize;
+}
 
 + (NSArray *)alertBannersInView:(UIView *)view {
     return [[ALAlertBannerManager sharedManager] alertBannersInView:view];

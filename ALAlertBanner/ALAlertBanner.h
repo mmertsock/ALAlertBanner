@@ -132,4 +132,6 @@ typedef enum {
  */
 + (void)forceHideAllAlertBannersInView:(UIView *)view;
 
++ (void)setDefaultFontSizeForTitle:(CGFloat)titleSize subtitle:(CGFloat)subtitleSize;
+
 @end
