@@ -26,7 +26,9 @@
 
 + (NSString *)randomLoremIpsum {
     static int arrayCount = sizeof(loremIpsum) / sizeof(loremIpsum[0]);
-    return loremIpsum[arc4random_uniform(arrayCount)];
+    int index = arc4random_uniform(arrayCount + 1);
+    if (index == 0) return nil;
+    return loremIpsum[index - 1];
 }
 
 @end

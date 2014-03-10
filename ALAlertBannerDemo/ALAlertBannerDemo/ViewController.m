@@ -137,16 +137,21 @@
 }
 
 - (void)showAlertBannerInWindow:(UIButton *)button {
+    [ALAlertBanner setDefaultFontSizeForTitle:17 subtitle:15];
+    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     ALAlertBannerStyle randomStyle = (ALAlertBannerStyle)(arc4random_uniform(4));
     ALAlertBannerPosition position = (ALAlertBannerPosition)button.tag;
-    ALAlertBanner *banner = [ALAlertBanner alertBannerForView:appDelegate.window style:randomStyle position:position title:@"Lorem ipsum dolor sit amet, consectetur adipiscing elit." subtitle:[AppDelegate randomLoremIpsum] tappedBlock:^(ALAlertBanner *alertBanner) {
+    NSString *title = (arc4random_uniform(2) % 2 == 0) ? @"Lorem rye ipsum." : nil;
+    NSString *subtitle = [AppDelegate randomLoremIpsum];
+    ALAlertBanner *banner = [ALAlertBanner alertBannerForView:appDelegate.window style:randomStyle position:position title:title subtitle:subtitle tappedBlock:^(ALAlertBanner *alertBanner) {
         NSLog(@"tapped!");
         [alertBanner hide];
     }];
     banner.secondsToShow = self.secondsToShow;
     banner.showAnimationDuration = self.showAnimationDuration;
     banner.hideAnimationDuration = self.hideAnimationDuration;
+    
     [banner show];
 }
 
