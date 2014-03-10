@@ -55,10 +55,10 @@ static CGFloat defaultSubtitleFontSize = 10.0f;
 
 //macros referenced from MBProgressHUD. cheers to @matej
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
-    #define AL_SINGLELINE_TEXT_HEIGHT(text, font) [text length] > 0 ? [text sizeWithAttributes:nil].height : 0.f;
+    #define AL_SINGLELINE_TEXT_HEIGHT(text, font) [text length] > 0 ? [text sizeWithAttributes:@{NSFontAttributeName: font}].height : 0.f;
     #define AL_MULTILINE_TEXT_HEIGHT(text, font, maxSize, mode) [text length] > 0 ? [text boundingRectWithSize:maxSize \
                                                                                                        options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) \
-                                                                                                    attributes:nil \
+                                                                                                    attributes:@{NSFontAttributeName: font} \
                                                                                                        context:NULL].size.height : 0.f;
 #else
     #define AL_SINGLELINE_TEXT_HEIGHT(text, font) [text length] > 0 ? [text sizeWithFont:font].height : 0.f;
